@@ -1,10 +1,11 @@
 import express from 'express';
-import { getPlayers } from '../controllers/playerController.js';
+import playerController from '../controllers/playerController.js';
 
 const router = express.Router();
 
-router.get('/', getPlayers);
-
-// Agrega otras rutas aquí para operaciones como crear, actualizar, eliminar jugadores.
+router.get('/players', playerController.getPlayers);
+router.post('/players', playerController.createPlayer);
+router.put('/players/:id', playerController.updatePlayer);
+router.delete('/players/:id', playerController.deletePlayer);
 
 export default router;

@@ -1,12 +1,23 @@
-import { DataTypes } from 'sequelize';
-import { sequelize } from '../config/database.js';
+import { DataTypes, Model } from 'sequelize';
+import db from '../config/database.js';
 
-export const Player = sequelize.define('Player', {
-  name: { type: DataTypes.STRING, allowNull: false },
-  position: { type: DataTypes.STRING, allowNull: false },
-  club: { type: DataTypes.STRING },
-  rating: { type: DataTypes.INTEGER }, // Esta línea debe estar presente
-  nationality: { type: DataTypes.STRING },
+export class Player extends Model {}
+
+Player.init({
+    name: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    age: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+    },
+    position: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
 }, {
-  timestamps: true,
+    sequelize: db,
+    modelName: 'Player',
+    tableName: 'players',
 });
