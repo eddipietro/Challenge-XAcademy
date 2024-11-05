@@ -1,10 +1,12 @@
 import { Sequelize } from 'sequelize';
+import Player from './player.js';
+import User from './user.js';
+// Importa otros modelos según sea necesario
 
-const sequelize = new Sequelize(process.env.DB_NAME,process.env.DB_USER,process.env.DB_PASSWORD, {
+const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASSWORD, {
     host: 'localhost',
     dialect: 'mysql',
 });
-
 
 try {
     await sequelize.authenticate();
@@ -13,4 +15,12 @@ try {
     console.error('No se pudo conectar a la base de datos:', error);
 }
 
-export { sequelize };
+// Sincronizar modelos con la base de datos
+const models = {
+    Player,
+    User,
+    // Agrega otros modelos aquí
+};
+
+// Exportar la instancia de Sequelize y los modelos
+export { sequelize, models };
