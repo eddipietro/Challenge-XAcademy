@@ -1,14 +1,28 @@
-import { DataTypes } from 'sequelize';
-import sequelize from '../config/database.js';
-import Player from './player.js';
 import Skill from './skill.js';
+import { DataTypes } from 'sequelize';
+import { sequelize } from './index.js';
 
 const PlayerSkill = sequelize.define('PlayerSkill', {
-    playerId: { type: DataTypes.INTEGER, references: { model: Player, key: 'id' } },
-    skillId: { type: DataTypes.INTEGER, references: { model: Skill, key: 'id' } }
+    playerId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+            model: 'Players',
+            key: 'id'
+        }
+    },
+    skillId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+            model: 'Skills',
+            key: 'id'
+        }
+    },
+    value: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+    }
 });
-
-Player.belongsToMany(Skill, { through: PlayerSkill });
-Skill.belongsToMany(Player, { through: PlayerSkill });
 
 export default PlayerSkill;

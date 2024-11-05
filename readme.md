@@ -3,7 +3,7 @@ DB_USER=xacademy
 DB_PASSWORD=secretito
 DB_NAME=fifa_database
 DB_DIALECT=mysql
-DB_PORT=3306 
+DB_PORT=8000
 
 
 # Quedo la carpeta "utils"
@@ -14,3 +14,7 @@ DB_PORT=3306
 #  backend node test.js
 
 #  cuando marcamos node server.js. corre bien el servidor, asi que la base de datos esta bien conectada.
+
+
+
+

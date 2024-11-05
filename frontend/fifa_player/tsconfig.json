@@ -16,7 +16,7 @@
     "moduleResolution": "node",
     "importHelpers": true,
     "target": "ES2022",
-    "module": "CommonJS",  // Cambia a CommonJS si tienes problemas
+    "module": "ES2022",  // Cambia a CommonJS si tienes problemas
     "lib": [
       "ES2022",
       "dom"

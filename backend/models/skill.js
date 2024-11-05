@@ -1,9 +1,15 @@
 import { DataTypes } from 'sequelize';
-import { sequelize } from '../config/database.js';
+import { sequelize } from './index.js'; 
 
-export const Skill = sequelize.define('Skill', {
-  name: { type: DataTypes.STRING, allowNull: false },
-  level: { type: DataTypes.INTEGER },
-}, {
-  timestamps: false,
+const Skill = sequelize.define('Skill', {
+    name: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    description: {
+        type: DataTypes.STRING
+    },
+
 });
+
+export default Skill;

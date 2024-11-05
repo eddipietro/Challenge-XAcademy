@@ -1,23 +1,19 @@
-// src/main.server.ts
-import { enableProdMode } from '@angular/core';
-import { AppServerModule } from './app/app.server.module';
-import { renderModule } from '@angular/platform-server';
-import * as express from 'express';
-
-enableProdMode();
+import express from 'express'; // Importación por defecto de Express
 
 const app = express();
 
-app.get('*', (req, res) => {
-  renderModule(AppServerModule, {
-    document: '<app-root></app-root>',
-    url: req.url,
-  }).then(html => {
-    res.send(html);
-  });
+// Manejo de todas las rutas
+app.get('*', (req: express.Request, res: express.Response) => {
+    res.send('Hello from the server!'); // Puedes cambiar esto según tu lógica
 });
 
-const PORT = process.env.PORT || 4000;
+// Definición del puerto
+const PORT = process.env['PORT'] || 3306; // Uso de notación de corchetes
+
+// Iniciar el servidor
 app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+    console.log(`Server running on port ${PORT}`);
 });
+
+// Exportación por defecto
+export default app;

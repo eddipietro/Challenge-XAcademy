@@ -1,23 +1,17 @@
-import { DataTypes, Model } from 'sequelize';
-import db from '../config/database.js';
+import { DataTypes } from 'sequelize';
+import { sequelize } from './index.js';
 
-export class Player extends Model {}
-
-Player.init({
+const Player = sequelize.define('Player', {
+    id: {
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
+        primaryKey: true,
+    },
     name: {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    age: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-    },
-    position: {
-        type: DataTypes.STRING,
-        allowNull: false,
-    },
-}, {
-    sequelize: db,
-    modelName: 'Player',
-    tableName: 'players',
+
 });
+
+export default Player;

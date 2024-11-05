@@ -1,17 +1,20 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Player } from '../models/player.model'; // Asegúrate de que esta ruta sea correcta
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class PlayerService {
-  private apiUrl = 'http://localhost:3306/api/players'; // Asegúrate de que esta URL sea correcta
+    private apiUrl = 'http://localhost:8080/api/players';
 
-  constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient) {}
 
-  getPlayerById(id: string): Observable<Player> {
-    return this.http.get<Player>(`${this.apiUrl}/${id}`);
-  }
+    getPlayers(): Observable<any> {
+        return this.http.get(this.apiUrl);
+    }
+
+    getPlayer(id: number): Observable<any> {
+        return this.http.get(`${this.apiUrl}/${id}`);
+    }
 }
